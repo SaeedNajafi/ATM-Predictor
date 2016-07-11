@@ -1,0 +1,348 @@
+.Header{
+	width: 100%;
+	height: 50px;
+	background-color: #fefefe;
+	border-bottom: 1px #e6e6e6 solid;
+	margin-top: 0px;
+
+}
+
+.Footer{
+	width: 100%;
+	height: 100px;
+	background-color: #fefefe;
+	border-top: 2px #e6e6e6 solid;
+	margin-left: auto;
+	margin-right: auto;
+	
+
+}
+
+.Footer p{
+	
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size: 16px;
+	padding-top: 15px;
+	text-align:center;
+	margin-left: auto;
+	margin-top: 0px;
+
+}
+
+.Link:Hover{
+	cursor: pointer;
+	color: #222222;
+
+}
+
+.Body{
+	width: 100%;
+	background-color: #fefefe;
+	padding-bottom: 25px;
+	
+}
+
+.Top{
+	
+	width: 40px;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 25px;
+	
+}
+.Loading{
+	
+	width: 40px;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 25px;
+	
+}
+
+.Top:Hover{
+
+	cursor: pointer;
+}
+
+.Image{
+	width: 85%;
+	height: 600px;
+	background-color: #fefefe;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	
+}
+
+
+.Motto{
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size: 40px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 71%;
+}
+
+
+.About, .Help {
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size:20px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	width: 80%;
+
+
+	
+}
+
+
+.Error{
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size:20px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 80%;
+	
+}
+.Prediction{
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size:20px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 80%;
+	
+
+}
+
+
+.Table{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 40%;
+	
+}
+.TRH{
+	
+	color: #111111;
+	text-align:center;
+	margin-left: auto;
+	margin-right:auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
+	
+}
+
+.TRD{
+	
+	color: #444444;
+	font-size:16px;
+	text-align:center;
+	margin-left: auto;
+	margin-right:auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
+	
+}
+.Error{
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	font-size:20px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 80%;
+	
+}
+
+.Help_Span{
+
+color: red;
+
+}
+
+.Menue{
+	float: right;
+	padding:10px;
+	font-size: 20px;
+	padding-right:25px;
+	padding-left:25px;
+	padding-top:15px;
+	border-left: 1px #e6e6e6 solid;
+	height: 25px;
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	background-color: white;
+}
+
+.Menue:Hover{
+	cursor: pointer;
+	background-color: #f9f9f9;
+	
+}
+
+
+.Menue_Left{
+	float: left;
+	padding:10px;
+	font-size: 20px;
+	padding-right:25px;
+	padding-left:25px;
+	padding-top:15px;
+	border-right: 1px #e6e6e6 solid;
+	height: 25px;
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	background-color: white;
+}
+
+.Menue_Left:Hover{
+	cursor: pointer;
+	background-color: #f9f9f9;
+	
+}
+
+
+
+.Predict_Div {
+    width:80%;
+    height:50%;
+    margin:auto;
+    padding-top: 30px;
+   
+}
+
+
+.Predict_Header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Predict_Header h3 {
+    color: #666666;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    float:left;
+}
+.Predict_Header span{
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+input{
+    margin-top: 15px;
+}
+
+input label {
+
+    color: #d4d4d4;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    
+}
+
+input::-webkit-input-placeholder{
+    color:    #dedede;
+}
+
+input:-moz-placeholder{
+    color:    #d4d4d4;
+}
+
+input[type=text]{
+direction:rtl;
+text-align:center;
+    background:#ffffff;
+    font-size: 0.8rem;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 5px;
+    margin-left: 3%;
+    padding-top:15px;
+    padding-bottom:15px;
+    width:29%;
+    box-shadow: 0px 0px 0px 1px #f4f4f4, inset 0px 1px 1px #f4f4f4, 0px 1px 1px #f4f4f4;
+}
+
+input[type=text]:FOCUS{
+
+    background: white;
+    outline: none;  
+}
+
+input label.terms {
+
+    float:left;
+    font-size: 14px;
+    font-style: italic;
+
+}
+
+
+#Predict_Predict{
+    
+
+
+	border-radius: 3px;
+	font-size: 20px;
+	padding-right:25px;
+	padding-left:25px;
+	border: 1px #e6e6e6 solid;
+	height: 40px;
+	font-family: "Times New Roman", Times, serif;
+	color: #666666;
+	background-color: white;
+        width:29%;
+        margin-right:auto;
+        margin-left:auto;
+        display:  block;
+    
+
+    
+}
+
+#Predict_Predict:HOVER{	
+	cursor: pointer;
+	background-color: #f9f9f9;
+}
+
+

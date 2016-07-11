@@ -1,0 +1,276 @@
+#!/usr/bin/python2.7
+
+from sklearn.ensemble import RandomForestClassifier
+from numpy import genfromtxt
+import mysql.connector
+from mysql.connector import errorcode
+import cgi
+import cgitb 
+import sys
+import re
+import datetime
+import jalali
+import cPickle
+
+
+
+
+"""
+Credentials for database connection
+
+"""
+
+config = {
+
+  'user': 'root',
+  'password': 'S_njf1372',
+  'host': '127.0.0.1',
+  'database': 'bsc_thesis',
+  'raise_on_warnings': True,
+
+}
+
+try:
+  cnx = mysql.connector.connect(**config)
+
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with your username or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+
+cursor = cnx.cursor()
+
+def GetInput():
+	"This funtion gets the input data from the client browser and checks its validity"
+
+	try:
+		arguments = cgi.FieldStorage()
+		tndt=arguments.getvalue("tndt")
+		tcdt=arguments.getvalue("tcdt")
+		hour=arguments.getvalue("hour")
+		minute=arguments.getvalue("minute")
+
+		pattern = re.compile("^[0-9]+$")
+		check=True
+
+		if not (pattern.match(tndt)):
+			check=False
+
+		if not (pattern.match(tcdt)):
+			check=False
+
+		if not (pattern.match(hour)):
+			check=False	
+
+		if not (pattern.match(minute)):
+			check=False	
+
+		if check:
+
+			tndt=int(tndt)
+			tcdt=int(tcdt)
+			hour=int(hour)
+			minute=int(minute)
+
+			if not (tndt>5 and tndt<2000):
+				check=False
+
+			if not (tcdt>1 and tcdt<3000):
+				check=False
+
+			if not (hour>=0 and hour<=5):
+				check=False	
+
+			if not (minute>=0 and minute<=59):
+				check=False	
+
+			if checK:
+				return ["True", str(tndt), str(tcdt), str(hour), str(minute)];
+			else:
+				return ["False","Wrong input data! Please go to the help section for more information about the expected input."];   
+
+		else:
+			return ["False","Wrong input data! Please go to the help section for more information about the expected input."];
+
+	except:
+	    	return ["False","Wrong input data! Please go to the help section for more information about the expected input."];
+
+
+
+def Output(data):
+	"This funtion predicts and sends out the output xml to the client browser"
+	
+	print("Content-type: text/xml")
+	print
+	print("<?xml version='1.0' encoding='UTF-8' ?>")
+	print("<results>")
+
+	if data[0]=="False":
+
+		print("\t<error>")
+		print("\t\t<message>%s</message>" % data[1])
+	    	print("\t</error>")
+		print("</results>")
+
+
+
+	if data[0]=="True":
+		
+		tndt=int(data[1])
+		tcdt=int(data[2])
+		hour=int(data[3])
+		minute=int(data[4])
+
+		now0 = datetime.datetime.now()
+		now1=now0+datetime.timedelta(days=1)
+		now2=now0+datetime.timedelta(days=2)
+		now3=now0+datetime.timedelta(days=3)
+		now4=now0+datetime.timedelta(days=4)
+		now5=now0+datetime.timedelta(days=5)
+		now6=now0+datetime.timedelta(days=6)
+		
+		year0=now0.year
+		month0=now0.month
+		day0=now0.day
+
+		year1=now1.year
+		month1=now1.month
+		day1=now1.day
+
+		year2=now2.year
+		month2=now2.month
+		day2=now2.day
+
+		year3=now3.year
+		month3=now3.month
+		day3=now3.day
+
+		year4=now4.year
+		month4=now4.month
+		day4=now4.day
+
+		year5=now5.year
+		month5=now5.month
+		day5=now5.day
+
+		year6=now6.year
+		month6=now6.month
+		day6=now6.day
+
+		date0=jalali.Gregorian(year0+"-"+month0+"-"+day0).persian_string()
+		date1=jalali.Gregorian(year1+"-"+month1+"-"+day1).persian_string()
+		date2=jalali.Gregorian(year2+"-"+month2+"-"+day2).persian_string()
+		date3=jalali.Gregorian(year3+"-"+month3+"-"+day3).persian_string()
+		date4=jalali.Gregorian(year4+"-"+month4+"-"+day4).persian_string()
+		date5=jalali.Gregorian(year5+"-"+month5+"-"+day5).persian_string()
+		date6=jalali.Gregorian(year6+"-"+month6+"-"+day6).persian_string()
+		
+		test=[]
+		
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date0)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+					
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date1)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date2)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date3)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date4)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date5)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+		query = ("SELECT * FROM dates WHERE dt = '%s' ") % (date6)	
+		cursor.execute(query)
+				
+		for row in cursor:		
+			Day=str(row[1])
+			Month=str(row[2])
+			Season=str(row[3])
+			Day_Of_Week=str(row[4])
+			Is_Holiday=str(row[5])
+			Date_Importance=str(row[6])
+			test.append([tndt , long(tcdt*10000000), int(Day) , int(Month) , int(Season) , int(Day_Of_Week) , int(Is_Holiday) , float(Date_Importance) , float(hour+minute/60.00)])
+
+
+		with open('../file/Model.pkl', 'rb') as fid:
+    			rf = cPickle.load(fid)
+			result=rf.predict(test)
+	   	
+			for r in result:
+				print("\t<result>")
+				print("\t\t<class>%s</class>" % r)
+	    			print("\t</result>")
+			
+			print("</results>")
+
+	
+check=GetInput()
+Output(check)
+
+cursor.close()
+cnx.close()

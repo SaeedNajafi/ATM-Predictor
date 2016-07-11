@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+  <link rel="stylesheet" href="../css/ATM.css" type="text/css"/>
+  <script src="../javascript/jquery.min.js"></script>
+  
+</head>
+
+<body>
+
+	<div class="Header">
+
+		<div class="Menue_Left" onclick="Predict()" >Predict your ATM</div>
+		<div class="Menue" onclick="Help()" >Help</div>
+		<div class="Menue" onclick="About()" >About</div>
+
+	</div>
+
+
+
+	<div class="Body">
+
+		<div class="Motto">We can help you offer better services to your customers</div>
+		<div class="Image"></div>
+		<div class="About">	
+
+			<p>Banks aim to provide 24-hour daily ATM services. This web interface offers a method to predict ATM problems; To predict whether they will run into a problem on a specific day or not.
+			</p>
+	
+			<p>Prediction is based on some learning models trained upon features derived from ATM supervision log files. This project was undertaken as my B.Sc. thesis at Amirkabir University of Technology.
+			</p>
+		</div>
+
+		<div class="Help">	
+			<p>If you wish to predict your ATM, use the menu on the top-left corner of the site. You also need to give some information about your ATM's functionality such as total number of daily transactions, total credit of daily transactions and daily supervision length.
+			</p>
+	  		<p>
+			Please take note of these example values. Total number of daily transcations e.g. <span class="Help_Span">600</span>. Total credit of daily transactions in million Rials e.g. <span class="Help_Span">800</span>. Daily supervision length in hours and minutes e.g. <span class="Help_Span">00:20</span>. You, as a bank official, have access to these data. For an exact prediction, please specify correct values. 
+			</p>		
+		</div>
+	
+		<div class="Predict_Div">	        
+
+        		<div class="Predict">
+        			<input type="text" placeholder="Total Number of Daily Transactions e.g. 600"  maxlength="4" id="Predict_TNDT" required="required" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Total Number of Daily Transactions e.g. 600'"/>
+
+				<input type="text" placeholder="Total Credit of Daily Transactions e.g. 800 m Rials" maxlength="4" id="Predict_TCDT" required="required" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Total Credit of Daily Transactions e.g. 800 m Rials'"/>
+	
+				<input type="text" placeholder="Daily Supervision Length e.g. 00:20"  maxlength="5" id="Predict_DSL" required="required" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Daily Supervision Length e.g. 00:15'"/>
+	
+   			
+				<input type="button" id="Predict_Predict"  value="Predict" onclick="PredictATM()"/>
+   
+        		</div>
+
+		</div>
+		<div class="Result">
+			<div class="Loading">
+				<img src="../image/loading.gif" height="40" width="40">
+			</div>
+			<div class="Error">
+				<p class="Error">Wrong input data! Please go to the help section for more information about the expected input.</p>
+			</div>	
+			<div class="Prediction">	
+				<table class="Table">
+				  <tr class="TRH">
+				    <td class="Date">Date</td>
+				    <td class="PN">Prediction</td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date1"></td>
+				    <td class="PN" id="PN1"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date2"></td>
+				    <td class="PN" id="PN2"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date3"></td>
+				    <td class="PN" id="PN3"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date4"></td>
+				    <td class="PN" id="PN4"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date5"></td>
+				    <td class="PN" id="PN5"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date6"></td>
+				    <td class="PN" id="PN6"></td> 
+				  </tr>
+				  <tr class="TRH TRD">
+				    <td class="Date" id="Date7"></td>
+				    <td class="PN" id="PN7"></td> 
+				  </tr>
+				</table>
+				<p class="Description">N (Negative): It is most likely that your cash machine will operate without any major problems.</p>
+				<p class="Description">P (Positive): It is most likely that your cash machine will run into a problem. So, you need to anticipate it.</p>
+			</div>
+		</div>
+
+		<div class="Top" onclick="Top()">
+			<img src="../image/top.png" height="40" width="40">
+		</div>
+
+	</div>
+
+	<div class="Footer">
+
+		<p>For more information about this project visit <span class="Link" onclick="Redirect()">here</span></p>
+		<p>© 2016 Saeed Najafi</p>
+
+	</div>
+
+	<script src="../javascript/ATM.js"></script>
+
+</body>
+
+</html>
+​
