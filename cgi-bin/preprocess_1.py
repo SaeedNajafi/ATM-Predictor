@@ -73,7 +73,7 @@ Credentials for database connection
 config = {
 
   'user': 'root',
-  'password': 'S_njf1372',
+  'password': '',
   'host': '127.0.0.1',
   'database': 'bsc_thesis',
   'raise_on_warnings': True,

@@ -1,5 +1,5 @@
-var images=new Array('../image/header2.jpg','../image/header1.jpg','../image/header3.jpg');
-var nextimage=0;
+var images=new Array('./image/header2.jpg','./image/header1.jpg','./image/header3.jpg');
+var nextimage=0
 doSlideshow();
 
 $(".About").hide();
@@ -239,7 +239,7 @@ function Top(){
 
 function Redirect(){
 
-	window.open("https://github.com/SaeedNajafi/ATM_Predictor");
+	window.open("https://github.com/SaeedNajafi/ATM-Predictor");
 
 }
 
